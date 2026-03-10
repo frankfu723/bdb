@@ -1,8 +1,8 @@
 'use client';
 
 import PageHeader from '@/components/PageHeader';
-import MainContent from '@/components/human/MainContent';
-import SpecsTable from '@/components/human/SpecsTable';
+import MainContent from '@/components/human/soft/MainContent';
+import SpecsTable from '@/components/human/soft/SpecsTable';
 import ContactSection from '@/components/ContactSection';
 
 export default function Page() {

@@ -1,4 +1,4 @@
-// /src/components/human/SpecsTable.tsx
+// /src/components/human/soft/SpecsTable.tsx
 type Row = {
   label: string;
   v: string[];
@@ -9,9 +9,6 @@ const HEADERS = [
   '躺椅式柔性氧艙',
   '雙人主機',
   '單人主機',
-  '單人豪華版硬殼氧艙',
-  '雙人豪華版硬殼氧艙',
-  '豪華版主機',
 ];
 
 const ROWS: Row[] = [
@@ -21,9 +18,6 @@ const ROWS: Row[] = [
       'L 178 × W 100 × H 140 cm',
       'W 47 × D 52 × H 88 cm',
       'W 44 × D 48 × H 81 cm',
-      'L 2000 × W 1200 × H 1900 mm',
-      'L 2000 × W 1800 × H 1900 mm',
-      'W 47 × D 52 × H 88 cm',
     ],
   },
   {
@@ -32,9 +26,6 @@ const ROWS: Row[] = [
       '－',
       '220V AC / 1000W\n或 110V AC / 2000W',
       '220V AC / 800W\n或 110V AC / 1600W',
-      '－',
-      '－',
-      '220V AC / 1000W\n或 110V AC / 2000W',
     ],
   },
   {
@@ -42,9 +33,6 @@ const ROWS: Row[] = [
     v: [
       '最大保壓 15 kPa，可設定',
       '－',
-      '－',
-      '最大保壓 30 kPa，可設定',
-      '最大保壓 30 kPa，可設定',
       '－',
     ],
   },
@@ -54,9 +42,6 @@ const ROWS: Row[] = [
       '建議 10 kPa 或 1.20 ATA 以下，可設定',
       '－',
       '－',
-      '建議 10 kPa 或 1.20 ATA 以下，可設定',
-      '建議 10 kPa 或 1.20 ATA 以下，可設定',
-      '－',
     ],
   },
   {
@@ -65,9 +50,6 @@ const ROWS: Row[] = [
       '－',
       '10L 兩組，可輕鬆更換',
       '10L 一組，可輕鬆更換',
-      '－',
-      '－',
-      '10L 兩組，可輕鬆更換',
     ],
   },
   {
@@ -75,9 +57,6 @@ const ROWS: Row[] = [
     v: [
       '艙內氧濃度 ≤ 30%，\n或依客戶要求設定（50% 以下）',
       '制氧濃度 ≤ 95.6%',
-      '制氧濃度 ≤ 95.6%',
-      '艙內氧濃度 ≤ 30%，\n或依客戶要求設定（50% 以下）',
-      '艙內氧濃度 ≤ 30%，\n或依客戶要求設定（50% 以下）',
       '制氧濃度 ≤ 95.6%',
     ],
   },
@@ -87,18 +66,12 @@ const ROWS: Row[] = [
       '25°C 以下（艙內溫度）',
       '專利冷凍液制冷',
       '專利冷凍液制冷',
-      '25°C 以下（艙內溫度可調控）',
-      '25°C 以下（艙內溫度可調控）',
-      '專利冷凍液制冷',
     ],
   },
   {
     label: '護智燈系統',
     v: [
       '選配',
-      '－',
-      '－',
-      '－',
       '－',
       '－',
     ],
@@ -109,9 +82,6 @@ const ROWS: Row[] = [
       '－',
       '－',
       '－',
-      '白光',
-      '白光',
-      '－',
     ],
   },
   {
@@ -119,9 +89,6 @@ const ROWS: Row[] = [
     v: [
       '負離子及 UV 紫外線滅菌',
       '－',
-      '－',
-      '負離子及 UV 紫外線滅菌',
-      '負離子及 UV 紫外線滅菌',
       '－',
     ],
   },
@@ -131,9 +98,6 @@ const ROWS: Row[] = [
       '石墨烯遠紅外線光療，可遙控控制',
       '－',
       '－',
-      '石墨烯遠紅外線光療，可遙控開關',
-      '石墨烯遠紅外線光療，可遙控開關',
-      '－',
     ],
   },
   {
@@ -142,9 +106,6 @@ const ROWS: Row[] = [
       '內部緊急按鈕',
       '觸摸屏緊急按鈕',
       '觸摸屏緊急按鈕',
-      '內部緊急按鈕及對講機',
-      '內部緊急按鈕及對講機',
-      '觸摸屏緊急按鈕',
     ],
   },
   {
@@ -152,9 +113,6 @@ const ROWS: Row[] = [
     v: [
       '內置單人沙發（可更換椅套）',
       '－',
-      '－',
-      '內置沙發（可更換椅套）',
-      '內置沙發（可更換椅套）',
       '－',
     ],
   },
@@ -169,7 +127,7 @@ export default function SpecsTable() {
         規格說明
       </h2>
 
-      {/* 手機版：每個型號一張卡 */}
+      {/* 手機版 */}
       <div className="md:hidden space-y-5">
         {modelIndexes.map((colIdx) => (
           <section
@@ -198,9 +156,9 @@ export default function SpecsTable() {
         ))}
       </div>
 
-      {/* 桌機版：可橫向捲動避免欄位太擠 */}
+      {/* 桌機版 */}
       <div className="hidden md:block overflow-x-auto">
-        <table className="min-w-[1200px] w-full text-green-900 border-collapse border border-gray-200 font-serif text-sm md:text-base table-auto">
+        <table className="min-w-[900px] w-full text-green-900 border-collapse border border-gray-200 font-serif text-sm md:text-base table-auto">
           <thead>
             <tr className="bg-green-900 text-white">
               {HEADERS.map((h) => (

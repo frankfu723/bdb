@@ -42,14 +42,17 @@ export default function DesktopNav({}: { partnerRegions: Region[] }) {
           >
             <div className="py-1">
               <div className="px-4 pt-3 pb-1 font-bold text-green-800/80 tracking-wider">氧艙系列</div>
-              <Link href="/products/oxy-series/human" className="block px-4 py-2 text-gray-700 hover:bg-gray-50" role="menuitem">
+              <Link href="/products/oxy-series/human/soft" className="block px-4 py-2 text-gray-700 hover:bg-gray-50" role="menuitem">
                 人用微壓氧艙
+              </Link>
+              <Link href="/products/oxy-series/human/premium" className="block px-4 py-2 text-gray-700 hover:bg-gray-50" role="menuitem">
+                豪華高壓氧艙
               </Link>
               <Link href="/products/oxy-series/pet" className="block px-4 py-2 text-gray-700 hover:bg-gray-50" role="menuitem">
                 寵物高壓氧艙
               </Link>
-
-              <div className="px-4 pt-3 pb-1 font-bold text-green-800/80 tracking-wider">芯片系列</div>
+              
+              {/* <div className="px-4 pt-3 pb-1 font-bold text-green-800/80 tracking-wider">芯片系列</div>
               <Link href="/products/chip-series/pet" className="block px-4 py-2 text-gray-700 hover:bg-gray-50" role="menuitem">
                 寵物芯片
               </Link>
@@ -58,7 +61,7 @@ export default function DesktopNav({}: { partnerRegions: Region[] }) {
               </Link>
               <Link href="/products/chip-series/semiconductor" className="block px-4 py-2 text-gray-700 hover:bg-gray-50" role="menuitem">
                 半導體芯片
-              </Link>
+              </Link> */}
 
               {/* <div className="px-4 pt-4 pb-1 text-s font-bold text-green-800/80 tracking-wider border-t border-gray-100 mt-1">保養系列</div>
               <Link href="/products/aesthetics/exosome-microcrystal-mask" className="block px-4 py-2 text-gray-700 hover:bg-gray-50" role="menuitem">

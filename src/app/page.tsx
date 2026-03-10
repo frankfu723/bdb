@@ -31,13 +31,13 @@ export default function HomePage() {
         {/* ===== 產品列表（維持比例，等比例放大） ===== */}
         <section className="mt-20 mx-auto">
           <h2 className="font-serif text-4xl text-center font-semibold text-green-900">產品列表</h2>
-          <p className="mt-2 text-center text-gray-600">引領未來，創新無限</p>
+          <p className="mt-2 text-center text-gray-600">多元氧艙解決方案，滿足不同場域需求</p>
 
           <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
             {[
-              { title: "寵物用高壓氧艙", img: "/images/products/pet.jpg", link: "/products/oxy-series/pet" },
-              { title: "人用微壓氧艙", img: "/images/products/human.jpg", link: "/products/oxy-series/human" },
-              { title: "豪華高壓氧艙", img: "/images/products/lux.jpg", link: "/" },
+              { title: "寵物用高壓氧艙", img: "/images/products/pet/main.jpg", link: "/products/oxy-series/pet" },
+              { title: "人用微壓氧艙", img: "/images/products/human/soft/cover_with_machine.jpg", link: "/products/oxy-series/human/soft" },
+              { title: "豪華高壓氧艙", img: "/images/products/human/premium/main.jpg", link: "/products/oxy-series/human/premium" },
             ].map((item, index) => (
               <a
                 key={index}

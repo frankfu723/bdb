@@ -65,16 +65,22 @@ export default function MobileNav({
                 寵物高壓氧艙
               </Link>
               <Link
-                href="/products/oxy-series/human"
+                href="/products/oxy-series/human/soft"
                 onClick={closeMenu}
                 className="block text-gray-700 hover:text-green-700"
               >
                 人用微壓氧艙
               </Link>
-
+              <Link
+                href="/products/oxy-series/human/premium"
+                onClick={closeMenu}
+                className="block text-gray-700 hover:text-green-700"
+              >
+                豪華高壓氧艙
+              </Link>
               <hr className="my-3 border-green-100" />
 
-              {/* 芯片系列 */}
+              {/* 芯片系列
               <div className="tracking-wide text-green-800/80 select-none">
                 芯片系列
               </div>
@@ -98,7 +104,7 @@ export default function MobileNav({
                 className="block text-gray-700 hover:text-green-700"
               >
                 半導體芯片
-              </Link>
+              </Link> */}
             </div>
           )}
         </li>
