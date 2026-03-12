@@ -80,7 +80,7 @@ export default function MobileNav({
               </Link>
               <hr className="my-3 border-green-100" />
 
-              {/* 芯片系列
+              芯片系列
               <div className="tracking-wide text-green-800/80 select-none">
                 芯片系列
               </div>
@@ -104,7 +104,7 @@ export default function MobileNav({
                 className="block text-gray-700 hover:text-green-700"
               >
                 半導體芯片
-              </Link> */}
+              </Link>
             </div>
           )}
         </li>

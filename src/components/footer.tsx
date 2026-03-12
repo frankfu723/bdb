@@ -13,8 +13,9 @@ import {
 type ChipLink = { href: string; label: string };
 
 const OXY_LINKS: ChipLink[] = [
-  { href: '/products/pet', label: '寵物高壓氧艙' },
-  { href: '/products/human', label: '人用微壓氧艙' },
+  { href: '/products/oxy-series/pet', label: '寵物高壓氧艙' },
+  { href: '/products/oxy-series/human/soft', label: '人用微壓氧艙' },
+  { href: '/products/oxy-series/human/premium', label: '豪華高壓氧艙' },
 ];
 
 const CHIP_LINKS: ChipLink[] = [
@@ -35,12 +36,16 @@ export default function Footer() {
   // 兩個獨立開關：各自展開在對應的清單項目之下
   const [openProducts, setOpenProducts] = useState(false);
   const [openLocations, setOpenLocations] = useState(false);
+  const [openOxy, setOpenOxy] = useState(false);
+  const [openChip, setOpenChip] = useState(false);
 
   // 換頁自動收合
-  useEffect(() => {
-    setOpenProducts(false);
-    setOpenLocations(false);
-  }, [pathname]);
+useEffect(() => {
+  setOpenProducts(false);
+  setOpenLocations(false);
+  setOpenOxy(false);
+  setOpenChip(false);
+}, [pathname]);
 
   const companyInfo = [
     { Icon: PhoneIcon, label: '服務電話', value: '03-2871723' },
@@ -183,17 +188,89 @@ export default function Footer() {
           </div>
 
           {/* 產品連結 */}
-          <div className="w-full">
-            <h3 className="text-lg font-bold mb-4 text-center sm:text-left">產品連結</h3>
-            <ul className="space-y-3 text-center sm:text-left">
-              <li>
-                <Link href="/products" className="hover:text-green-200">－BDB 高壓氧艙</Link>
-              </li>
-              <li>
-                <Link href="/products/chip-series" className="hover:text-green-200">－BDB 芯片系列</Link>
-              </li>
-            </ul>
-          </div>
+<div className="w-full">
+  <h3 className="text-lg font-bold mb-4 text-center sm:text-left">產品連結</h3>
+
+  <ul className="space-y-3 text-center sm:text-left">
+
+    {/* 氧艙系列 */}
+    <li>
+      <button
+        type="button"
+        onClick={() => {
+          setOpenOxy((v) => !v);
+          if (!openOxy) setOpenChip(false);
+        }}
+        className="hover:text-green-200"
+      >
+        氧艙系列
+      </button>
+
+      <div
+        className={`overflow-hidden transition-all duration-300 ${
+          openOxy ? 'max-h-40 mt-2 opacity-100' : 'max-h-0 opacity-0'
+        }`}
+      >
+        <ul className="pl-4 space-y-2 text-sm">
+          <li>
+            <Link href="/products/oxy-series/human/soft" className="hover:text-green-200">
+              人用微壓氧艙
+            </Link>
+          </li>
+          <li>
+            <Link href="/products/oxy-series/human/premium" className="hover:text-green-200">
+              豪華高壓氧艙
+            </Link>
+          </li>
+          <li>
+            <Link href="/products/oxy-series/pet" className="hover:text-green-200">
+              寵物高壓氧艙
+            </Link>
+          </li>
+        </ul>
+      </div>
+    </li>
+
+    {/* 芯片系列 */}
+    <li>
+      <button
+        type="button"
+        onClick={() => {
+          setOpenChip((v) => !v);
+          if (!openChip) setOpenOxy(false);
+        }}
+        className="hover:text-green-200"
+      >
+        芯片系列
+      </button>
+
+      <div
+        className={`overflow-hidden transition-all duration-300 ${
+          openChip ? 'max-h-40 mt-2 opacity-100' : 'max-h-0 opacity-0'
+        }`}
+      >
+        <ul className="pl-4 space-y-2 text-sm">
+          <li>
+            <Link href="/products/chip-series/pet" className="hover:text-green-200">
+              寵物芯片
+            </Link>
+          </li>
+          <li>
+            <Link href="/products/chip-series/auto" className="hover:text-green-200">
+              汽車芯片
+            </Link>
+          </li>
+          <li>
+            <Link href="/products/chip-series/semiconductor" className="hover:text-green-200">
+              半導體芯片
+            </Link>
+          </li>
+        </ul>
+      </div>
+    </li>
+
+  </ul>
+</div>
         </div>
 
         {/* CTA */}
