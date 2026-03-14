@@ -10,14 +10,14 @@ export type Gym = {
 };
 
 export const gyms: Gym[] = [
-  {
-    name: "Second Wind GYM 青埔形象館",
-    address: "320桃園市中壢區青昇路237號",
-    hours: "週一至週日 06:00-00:00",
-    phone: "03-287-3496",
-    siteUrl: "https://www.facebook.com/swg.tw68/?locale=zh_TW",
-    tags: ["自主訓練", "私人教練", "預約制"],
-  },
+  // {
+  //   name: "Second Wind GYM 青埔形象館",
+  //   address: "320桃園市中壢區青昇路237號",
+  //   hours: "週一至週日 06:00-00:00",
+  //   phone: "03-287-3496",
+  //   siteUrl: "https://www.facebook.com/swg.tw68/?locale=zh_TW",
+  //   tags: ["自主訓練", "私人教練", "預約制"],
+  // },
   {
     name: "耕重健身工作室 Cultivate",
     address: "220新北市板橋區三民路一段56號B1",

@@ -22,7 +22,7 @@ export default function HomePage() {
       <div className="relative left-1/2 right-1/2 -translate-x-1/2 w-screen">
         <Banner
           imageSrc="/images/banner/home.jpg"
-          mobileImageSrc="/images/products/human.jpg"
+          mobileImageSrc="/images/products/human/soft/forest_chamber.jpg"
         />
       </div>
 
