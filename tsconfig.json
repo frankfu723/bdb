@@ -22,7 +22,7 @@
         "name": "next"
       }
     ],
-    "baseUrl": ".",
+    // "baseUrl": ".", // 之後 TypeScript 7.0 會停止支援所以先 remark 掉
     "paths": {
       "@/*": [
         "./src/*"
