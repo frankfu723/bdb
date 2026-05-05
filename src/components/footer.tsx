@@ -33,19 +33,17 @@ export default function Footer() {
   const [year] = useState<number>(new Date().getFullYear());
   const pathname = usePathname();
 
-  // 兩個獨立開關：各自展開在對應的清單項目之下
   const [openProducts, setOpenProducts] = useState(false);
   const [openLocations, setOpenLocations] = useState(false);
   const [openOxy, setOpenOxy] = useState(false);
   const [openChip, setOpenChip] = useState(false);
 
-  // 換頁自動收合
-useEffect(() => {
-  setOpenProducts(false);
-  setOpenLocations(false);
-  setOpenOxy(false);
-  setOpenChip(false);
-}, [pathname]);
+  useEffect(() => {
+    setOpenProducts(false);
+    setOpenLocations(false);
+    setOpenOxy(false);
+    setOpenChip(false);
+  }, [pathname]);
 
   const companyInfo = [
     { Icon: PhoneIcon, label: '服務電話', value: '03-2871723' },
@@ -55,35 +53,49 @@ useEffect(() => {
   ];
 
   return (
-    <footer className="bg-green-900 text-white pt-20 pb-10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer className="bg-green-900 pt-20 pb-10 text-white">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* 三欄資訊區 */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-10 gap-x-12 justify-items-center sm:justify-items-start">
+        <div className="grid grid-cols-1 gap-y-12 md:grid-cols-3 md:gap-x-16">
           {/* 公司資訊 */}
-          <div className="w-full">
-            <h3 className="text-lg font-bold mb-6 text-center sm:text-left">寶的寶有限公司</h3>
-            <ul className="space-y-6">
+          <div className="mx-auto w-full max-w-xs text-center">
+            <h3 className="mb-6 text-center text-lg font-bold">
+              寶的寶有限公司
+            </h3>
+
+            <ul className="space-y-6 text-center">
               {companyInfo.map(({ Icon, label, value }) => (
-                <li key={label} className="flex items-start justify-center sm:justify-start gap-1 sm:gap-3">
-                  <Icon className="w-5 h-5 shrink-0" />
-                  <div className="flex flex-col text-center sm:text-left">
+                <li key={label} className="text-center">
+                  <div className="inline-flex items-center justify-center gap-2">
+                    <Icon className="h-5 w-5 shrink-0" />
                     <span className="font-medium">{label}</span>
-                    <span className="break-words">{value}</span>
+                  </div>
+
+                  <div className="mt-1 text-center">
+                    <span className="block break-words">{value}</span>
                   </div>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* 快速導覽（點擊項目 → 在該項目下方顯示 chips） */}
-          <div className="w-full">
-            <h3 className="text-lg font-bold mb-4 text-center sm:text-left">快速導覽</h3>
-            <ul className="space-y-1 text-center sm:text-left">
+          {/* 快速導覽 */}
+          <div className="mx-auto w-full max-w-xs text-center">
+            <h3 className="mb-4 text-center text-lg font-bold">
+              快速導覽
+            </h3>
+
+            <ul className="space-y-1 text-center">
               <li>
-                <Link href="/" className="hover:text-green-200">－首頁</Link>
+                <Link href="/" className="hover:text-green-200">
+                  －首頁
+                </Link>
               </li>
+
               <li>
-                <Link href="/about" className="hover:text-green-200">－關於寶的寶</Link>
+                <Link href="/about" className="hover:text-green-200">
+                  －關於寶的寶
+                </Link>
               </li>
 
               {/* 產品介紹 */}
@@ -92,50 +104,51 @@ useEffect(() => {
                   type="button"
                   onClick={() => {
                     setOpenProducts((v) => !v);
-                    // 若打開產品，關掉據點；反之亦然
                     if (!openProducts) setOpenLocations(false);
                   }}
-                  className="w-full text-left hover:text-green-200 text-center sm:text-left"
+                  className="w-full text-center hover:text-green-200"
                   aria-expanded={openProducts}
                   aria-controls="footer-products-panel"
                 >
                   －產品介紹
                 </button>
 
-                {/* chips：就在「產品介紹」這一行的下方 */}
                 <div
                   id="footer-products-panel"
                   className={`overflow-hidden transition-all duration-300 ease-out ${
-                    openProducts ? 'max-h-64 opacity-100 mt-2' : 'max-h-0 opacity-0'
+                    openProducts ? 'mt-2 max-h-64 opacity-100' : 'max-h-0 opacity-0'
                   }`}
                 >
-                  {/* 氧艙系列 */}
-                  <div className="text-xs text-white/80 mb-2 select-none">氧艙系列</div>
-                  <div className="flex flex-wrap gap-2 justify-center sm:justify-start">
+                  <div className="mb-2 text-xs text-white/80 select-none">
+                    氧艙系列
+                  </div>
+
+                  <div className="flex flex-wrap justify-center gap-2">
                     {OXY_LINKS.map((it) => (
                       <Link
                         key={it.href}
                         href={it.href}
                         onClick={() => setOpenProducts(false)}
-                        className="inline-flex items-center rounded-full border border-white/30 px-2.5 py-1 text-xs text-white hover:bg-white hover:text-[#003E1F] transition"
+                        className="inline-flex items-center rounded-full border border-white/30 px-2.5 py-1 text-xs text-white transition hover:bg-white hover:text-[#003E1F]"
                       >
                         {it.label}
                       </Link>
                     ))}
                   </div>
 
-                  {/* 分隔線 */}
                   <div className="my-3 border-t border-white/20" />
 
-                  {/* 芯片系列 */}
-                  <div className="text-xs text-white/80 mb-2 select-none">芯片系列</div>
-                  <div className="flex flex-wrap gap-2 justify-center sm:justify-start">
+                  <div className="mb-2 text-xs text-white/80 select-none">
+                    芯片系列
+                  </div>
+
+                  <div className="flex flex-wrap justify-center gap-2">
                     {CHIP_LINKS.map((it) => (
                       <Link
                         key={it.href}
                         href={it.href}
                         onClick={() => setOpenProducts(false)}
-                        className="inline-flex items-center rounded-full border border-white/30 px-2.5 py-1 text-xs text-white hover:bg-white hover:text-[#003E1F] transition"
+                        className="inline-flex items-center rounded-full border border-white/30 px-2.5 py-1 text-xs text-white transition hover:bg-white hover:text-[#003E1F]"
                       >
                         {it.label}
                       </Link>
@@ -152,27 +165,26 @@ useEffect(() => {
                     setOpenLocations((v) => !v);
                     if (!openLocations) setOpenProducts(false);
                   }}
-                  className="w-full text-left hover:text-green-200 text-center sm:text-left"
+                  className="w-full text-center hover:text-green-200"
                   aria-expanded={openLocations}
                   aria-controls="footer-locations-panel"
                 >
                   －服務據點
                 </button>
 
-                {/* chips：就在「服務據點」這一行的下方 */}
                 <div
                   id="footer-locations-panel"
                   className={`overflow-hidden transition-all duration-300 ease-out ${
-                    openLocations ? 'max-h-24 opacity-100 mt-2' : 'max-h-0 opacity-0'
+                    openLocations ? 'mt-2 max-h-24 opacity-100' : 'max-h-0 opacity-0'
                   }`}
                 >
-                  <div className="flex flex-wrap gap-2 justify-center sm:justify-start">
+                  <div className="flex flex-wrap justify-center gap-2">
                     {LOCATION_LINKS.map((it) => (
                       <Link
                         key={it.href}
                         href={it.href}
                         onClick={() => setOpenLocations(false)}
-                        className="inline-flex items-center rounded-full border border-white/30 px-2.5 py-1 text-xs text-white hover:bg-white hover:text-[#003E1F] transition"
+                        className="inline-flex items-center rounded-full border border-white/30 px-2.5 py-1 text-xs text-white transition hover:bg-white hover:text-[#003E1F]"
                       >
                         {it.label}
                       </Link>
@@ -182,95 +194,119 @@ useEffect(() => {
               </li>
 
               <li>
-                <Link href="/customer-service" className="hover:text-green-200">－客戶服務</Link>
+                <Link href="/customer-service" className="hover:text-green-200">
+                  －客戶服務
+                </Link>
               </li>
             </ul>
           </div>
 
           {/* 產品連結 */}
-<div className="w-full">
-  <h3 className="text-lg font-bold mb-4 text-center sm:text-left">產品連結</h3>
+          <div className="mx-auto w-full max-w-xs text-center">
+            <h3 className="mb-4 text-center text-lg font-bold">
+              產品連結
+            </h3>
 
-  <ul className="space-y-3 text-center sm:text-left">
+            <ul className="space-y-3 text-center">
+              {/* 氧艙系列 */}
+              <li>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setOpenOxy((v) => !v);
+                    if (!openOxy) setOpenChip(false);
+                  }}
+                  className="hover:text-green-200"
+                >
+                  氧艙系列
+                </button>
 
-    {/* 氧艙系列 */}
-    <li>
-      <button
-        type="button"
-        onClick={() => {
-          setOpenOxy((v) => !v);
-          if (!openOxy) setOpenChip(false);
-        }}
-        className="hover:text-green-200"
-      >
-        氧艙系列
-      </button>
+                <div
+                  className={`overflow-hidden transition-all duration-300 ${
+                    openOxy ? 'mt-2 max-h-40 opacity-100' : 'max-h-0 opacity-0'
+                  }`}
+                >
+                  <ul className="space-y-2 text-sm">
+                    <li>
+                      <Link
+                        href="/products/oxy-series/human/soft"
+                        className="hover:text-green-200"
+                      >
+                        人用微壓氧艙
+                      </Link>
+                    </li>
 
-      <div
-        className={`overflow-hidden transition-all duration-300 ${
-          openOxy ? 'max-h-40 mt-2 opacity-100' : 'max-h-0 opacity-0'
-        }`}
-      >
-        <ul className="pl-4 space-y-2 text-sm">
-          <li>
-            <Link href="/products/oxy-series/human/soft" className="hover:text-green-200">
-              人用微壓氧艙
-            </Link>
-          </li>
-          <li>
-            <Link href="/products/oxy-series/human/premium" className="hover:text-green-200">
-              豪華高壓氧艙
-            </Link>
-          </li>
-          <li>
-            <Link href="/products/oxy-series/pet" className="hover:text-green-200">
-              寵物高壓氧艙
-            </Link>
-          </li>
-        </ul>
-      </div>
-    </li>
+                    <li>
+                      <Link
+                        href="/products/oxy-series/human/premium"
+                        className="hover:text-green-200"
+                      >
+                        豪華高壓氧艙
+                      </Link>
+                    </li>
 
-    {/* 芯片系列 */}
-    <li>
-      <button
-        type="button"
-        onClick={() => {
-          setOpenChip((v) => !v);
-          if (!openChip) setOpenOxy(false);
-        }}
-        className="hover:text-green-200"
-      >
-        芯片系列
-      </button>
+                    <li>
+                      <Link
+                        href="/products/oxy-series/pet"
+                        className="hover:text-green-200"
+                      >
+                        寵物高壓氧艙
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              </li>
 
-      <div
-        className={`overflow-hidden transition-all duration-300 ${
-          openChip ? 'max-h-40 mt-2 opacity-100' : 'max-h-0 opacity-0'
-        }`}
-      >
-        <ul className="pl-4 space-y-2 text-sm">
-          <li>
-            <Link href="/products/chip-series/pet" className="hover:text-green-200">
-              寵物芯片
-            </Link>
-          </li>
-          <li>
-            <Link href="/products/chip-series/auto" className="hover:text-green-200">
-              汽車芯片
-            </Link>
-          </li>
-          <li>
-            <Link href="/products/chip-series/semiconductor" className="hover:text-green-200">
-              半導體芯片
-            </Link>
-          </li>
-        </ul>
-      </div>
-    </li>
+              {/* 芯片系列 */}
+              <li>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setOpenChip((v) => !v);
+                    if (!openChip) setOpenOxy(false);
+                  }}
+                  className="hover:text-green-200"
+                >
+                  芯片系列
+                </button>
 
-  </ul>
-</div>
+                <div
+                  className={`overflow-hidden transition-all duration-300 ${
+                    openChip ? 'mt-2 max-h-40 opacity-100' : 'max-h-0 opacity-0'
+                  }`}
+                >
+                  <ul className="space-y-2 text-sm">
+                    <li>
+                      <Link
+                        href="/products/chip-series/pet"
+                        className="hover:text-green-200"
+                      >
+                        寵物芯片
+                      </Link>
+                    </li>
+
+                    <li>
+                      <Link
+                        href="/products/chip-series/auto"
+                        className="hover:text-green-200"
+                      >
+                        汽車芯片
+                      </Link>
+                    </li>
+
+                    <li>
+                      <Link
+                        href="/products/chip-series/semiconductor"
+                        className="hover:text-green-200"
+                      >
+                        半導體芯片
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
 
         {/* CTA */}
@@ -278,26 +314,33 @@ useEffect(() => {
           <Link
             href="https://line.me/ti/p/@464hptwo"
             target="_blank"
-            className="inline-flex items-center justify-center px-6 py-3 border border-white text-base font-medium tracking-wide text-white hover:bg-white hover:text-[#003E1F] transition-colors duration-300 max-w-xs w-full mx-auto sm:w-auto"
+            rel="noopener noreferrer"
+            className="mx-auto inline-flex w-full max-w-xs items-center justify-center border border-white px-6 py-3 text-base font-medium tracking-wide text-white transition-colors duration-300 hover:bg-white hover:text-[#003E1F] sm:w-auto"
           >
             立即預約洽詢 →
           </Link>
         </div>
 
         {/* 分隔線 */}
-        <div className="mt-16 border-t border-white/20 mx-auto max-w-6xl" />
+        <div className="mx-auto mt-16 max-w-6xl border-t border-white/20" />
 
         {/* 版權聲明 + 免責聲明連結 */}
-        <div className="pt-4 text-center text-sm space-x-1">
-          <span>&copy; {year} 寶的寶有限公司 | BDB International Co, Ltd.</span>
+        <div className="space-x-1 pt-4 text-center text-sm">
+          <span>
+            &copy; {year} 寶的寶有限公司 | BDB International Co, Ltd.
+          </span>
+
           <span className="opacity-50">｜</span>
+
           <Link
             href="/disclaimer"
             className="underline-offset-4 hover:text-green-200"
           >
             免責聲明
           </Link>
+
           <span className="opacity-50">｜</span>
+
           <Link
             href="/statement"
             className="underline-offset-4 hover:text-green-200"
@@ -305,7 +348,6 @@ useEffect(() => {
             特別聲明
           </Link>
         </div>
-
       </div>
     </footer>
   );

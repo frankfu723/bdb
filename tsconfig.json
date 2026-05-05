@@ -22,7 +22,7 @@
         "name": "next"
       }
     ],
-    // "baseUrl": ".", // 之後 TypeScript 7.0 會停止支援所以先 remark 掉
+    // "baseUrl": ".",
     "paths": {
       "@/*": [
         "./src/*"
@@ -33,6 +33,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
+    "**/*.d.ts",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts"
   ],

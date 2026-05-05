@@ -130,6 +130,9 @@ export default function DesktopNav({}: { partnerRegions: Region[] }) {
             <Link href="/resources/news" className="block px-4 py-2 text-gray-600 hover:bg-gray-50" role="menuitem">
               新聞報導
             </Link>
+            <Link href="/resources/videos" className="block px-4 py-2 text-gray-600 hover:bg-gray-50" role="menuitem">
+              影音科普
+            </Link>
           </div>
         </li>
 

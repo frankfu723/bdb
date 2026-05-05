@@ -138,7 +138,7 @@ export default function MobileNav({
               >
                 健身房
               </Link>
-
+              
               {/* 區域夥伴（預留） */}
               {partnerRegions.length > 0 && (
                 <div className="my-2">
@@ -176,6 +176,13 @@ export default function MobileNav({
                 className="block text-gray-700 hover:text-green-700"
               >
                 新聞報導
+              </Link>
+              <Link
+                href="/resources/videos"
+                onClick={closeMenu}
+                className="block text-gray-700 hover:text-green-700"
+              >
+                影音科普
               </Link>
             </div>
           )}
