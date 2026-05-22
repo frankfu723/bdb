@@ -54,7 +54,7 @@ const FEATURES: Feature[] = [
   {
     title: '專業微壓氧設計',
     bullets: [
-      '建議操作壓力約 10 kPa',
+      '建議操作壓力約 8 kPa',
       '兼顧安全性與舒適體驗',
       '平穩舒適的微高壓環境',
     ],
@@ -86,8 +86,8 @@ export default function MainContent() {
           </p>
 
           <p className="mt-4 text-gray-700 leading-8">
-            艙體尺寸為長 178 × 寬 100 × 高 140 cm，建議操作壓力約為 10 kPa
-            （約 1.20 ATA 以下），兼顧安全性、舒適性與商業空間導入的實用性。
+            艙體尺寸為長 178 × 寬 100 × 高 140 cm，建議操作壓力約為 8 kPa
+            （約 1.08 ATA 以下），兼顧安全性、舒適性與商業空間導入的實用性。
           </p>
 
           <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
@@ -101,7 +101,7 @@ export default function MainContent() {
             <div className="rounded-2xl border border-emerald-100 bg-white p-4 shadow-sm">
               <p className="text-sm text-gray-500">建議操作壓力</p>
               <p className="mt-1 text-lg font-semibold text-green-900">
-                10 kPa
+                8 kPa
               </p>
             </div>
 

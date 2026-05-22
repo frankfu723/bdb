@@ -96,11 +96,11 @@ export default function DesktopNav({}: { partnerRegions: Region[] }) {
             aria-label="服務據點選單"
           >
             <div className="py-2">
-              <Link href="/locations/pet-hospitals" className="block px-4 py-2 text-gray-600 hover:bg-gray-50" role="menuitem">
-                寵物醫院
+              <Link href="/locations/pet" className="block px-4 py-2 text-gray-600 hover:bg-gray-50" role="menuitem">
+                寵物照護場域
               </Link>
-              <Link href="/locations/gyms" className="block px-4 py-2 text-gray-600 hover:bg-gray-50" role="menuitem">
-                健身房
+              <Link href="/locations/human" className="block px-4 py-2 text-gray-600 hover:bg-gray-50" role="menuitem">
+                運動恢復場域
               </Link>
             </div>
           </div>

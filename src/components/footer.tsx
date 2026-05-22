@@ -25,8 +25,8 @@ const CHIP_LINKS: ChipLink[] = [
 ];
 
 const LOCATION_LINKS: ChipLink[] = [
-  { href: '/locations/pet-hospitals', label: '寵物醫院' },
-  { href: '/locations/gyms', label: '健身房' },
+  { href: '/locations/pet', label: '寵物照護場域' },
+  { href: '/locations/human', label: '運動恢復場域' },
 ];
 
 export default function Footer() {

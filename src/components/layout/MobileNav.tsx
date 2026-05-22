@@ -125,18 +125,18 @@ export default function MobileNav({
             <div id="mobile-locations-panel" className="pl-4 mt-2 space-y-2">
               {/* 分類捷徑 */}
               <Link
-                href="/locations/pet-hospitals"
+                href="/locations/pet"
                 onClick={closeMenu}
                 className="block text-gray-700 hover:text-green-700"
               >
-                寵物醫院
+                寵物照護場域
               </Link>
               <Link
-                href="/locations/gyms"
+                href="/locations/human"
                 onClick={closeMenu}
                 className="block text-gray-700 hover:text-green-700"
               >
-                健身房
+                運動恢復場域
               </Link>
               
               {/* 區域夥伴（預留） */}
