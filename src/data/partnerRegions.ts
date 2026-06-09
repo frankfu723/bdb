@@ -5,7 +5,7 @@ export const partnerRegions: PartnerRegion[] = [
   {
     region: "中部",
     items: [
-      { name: "東南動物醫院", url: "https://www.dongnan.bdb.com.tw" },
+      { name: "東南動物醫院", url: "https://donanvet.tw" },
       { name: "BoneBone蹦蹦寵物", url: "" },
       { name: "毛貓寵動物醫院", url: "https://www.maomeowpet.bdb.com.tw" },
       { name: "鈞懋動物醫院", url: "https://www.junmao.bdb.com.tw" },
@@ -26,7 +26,7 @@ export const partnerRegions: PartnerRegion[] = [
       { name: "佰成動物醫院", url: "https://www.baicheng.bdb.com.tw" },
       { name: "宏愛動物醫院", url: "https://www.hongai.bdb.com.tw" },
       { name: "亞幸動物醫院", url: "" },
-      { name: "登羣動物醫院", url: "" },
+      // { name: "登羣動物醫院", url: "" },
       { name: "史密斯動物醫院", url: "" },
       { name: "佳愛動物醫院", url: "" },
       { name: "我的動物醫院", url: "" },

@@ -15,7 +15,7 @@ export const hospitalDetails: Record<
     hours: '週一至週日 09:30–12:30, 14:00–17:00, 18:00–21:00',
     phone: '04-2296-0753',
     mapUrl: 'https://maps.google.com/?q=台中市北屯區崇德路二段30號',
-    siteUrl: 'https://www.dongnan.bdb.com.tw',
+    siteUrl: 'https://donanvet.tw',
     tags: ['犬貓', '預約制'],
   },
   BoneBone蹦蹦寵物: {
@@ -108,7 +108,7 @@ export const hospitalDetails: Record<
   },
 
   // ===== 南部 =====
-    名仁動物醫院: {
+  名仁動物醫院: {
     address: '900屏東縣屏東市仁愛路7號',
     hours: '週一至週六 09:00-12:00, 14:00-18:00, 19:00-23:00；週三 09:00-12:00, 14:00-16:00；週日 09:00–12:00, 14:00–16:00, 21:00–23:00',
     phone: '08-751-2022',
@@ -141,14 +141,14 @@ export const hospitalDetails: Record<
     siteUrl: '',
     tags: ['犬貓', '預約制'],
   },
-  登羣動物醫院: {
-    address: '806高雄市前鎮區瑞隆路228號',
-    hours: '週一至週六 09:00–13:00, 15:00–20:00；週日 09:00–13:00, 15:00–18:00',
-    phone: '07-727-6739',
-    mapUrl: 'https://maps.google.com/?q=高雄市前鎮區瑞隆路228號',
-    siteUrl: '',
-    tags: ['犬貓', '預約制'],
-  },
+  // 登羣動物醫院: {
+  //   address: '806高雄市前鎮區瑞隆路228號',
+  //   hours: '週一至週六 09:00–13:00, 15:00–20:00；週日 09:00–13:00, 15:00–18:00',
+  //   phone: '07-727-6739',
+  //   mapUrl: 'https://maps.google.com/?q=高雄市前鎮區瑞隆路228號',
+  //   siteUrl: '',
+  //   tags: ['犬貓', '預約制'],
+  // },
   史密斯動物醫院: {
     address: '800高雄市新興區民生一路199號',
     hours: '週一至週日 14:00–18:00, 19:00–22:00',
