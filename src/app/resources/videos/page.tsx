@@ -1,10 +1,7 @@
 // /src/app/resources/videos/page.tsx
-'use client';
 
 import PageHeader from '@/components/PageHeader';
 import Link from 'next/link';
-import Script from 'next/script';
-import { useEffect } from 'react';
 
 type Video = {
   title: string;
@@ -109,224 +106,160 @@ const videos: Video[] = [
 const petVideos = videos.filter((video) => video.audience === '寵物氧艙');
 const humanVideos = videos.filter((video) => video.audience === '人體氧艙');
 
-declare global {
-  interface Window {
-    instgrm?: {
-      Embeds?: {
-        process: () => void;
-      };
-    };
-  }
-}
-
-function processInstagramEmbeds() {
-  if (typeof window === 'undefined') return;
-
-  window.setTimeout(() => {
-    window.instgrm?.Embeds?.process();
-  }, 500);
-}
-
-function InstagramEmbed({ url, title }: { url: string; title: string }) {
+function VideoTags({ video }: { video: Video }) {
   return (
-    <div className="flex justify-center bg-white">
-      <blockquote
-        className="instagram-media"
-        data-instgrm-permalink={url}
-        data-instgrm-version="14"
-        style={{
-          background: '#FFF',
-          border: 0,
-          borderRadius: '12px',
-          boxShadow: 'none',
-          margin: 0,
-          maxWidth: '540px',
-          minWidth: '326px',
-          padding: 0,
-          width: '100%',
-        }}
-      >
-        <Link
-          href={url}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={`在 Instagram 查看：${title}`}
-        >
-          在 Instagram 查看這支影片
-        </Link>
-      </blockquote>
+    <div className="mb-5 flex flex-wrap gap-2">
+      <span className="rounded-full bg-gray-100 px-3 py-1 text-xs text-gray-600">
+        {video.audience}
+      </span>
+
+      <span className="rounded-full bg-green-50 px-3 py-1 text-xs text-green-800">
+        {video.category}
+      </span>
     </div>
   );
 }
 
-function FeaturedVideoCard({ video }: { video: Video }) {
+function VideoCard({ video, index }: { video: Video; index: number }) {
   return (
-    <article className="overflow-hidden rounded-xl border border-gray-200 bg-white transition-shadow hover:shadow-md">
-      <div className="border-b border-gray-100 bg-white px-3 pt-3">
-        <InstagramEmbed url={video.url} title={video.title} />
+    <article className="group relative flex h-full min-h-[260px] flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-green-200 hover:shadow-lg">
+      <div className="absolute right-5 top-5 text-5xl font-serif text-green-50 transition-colors group-hover:text-green-100">
+        {String(index + 1).padStart(2, '0')}
       </div>
 
-      <div className="p-5">
-        <div className="mb-3 flex flex-wrap gap-2">
-          <span className="inline-block rounded-full bg-gray-100 px-3 py-1 text-xs text-gray-600">
-            {video.audience}
-          </span>
-          <span className="inline-block rounded-full bg-green-50 px-3 py-1 text-xs text-green-800">
-            {video.category}
-          </span>
-        </div>
+      <div className="relative z-10 flex h-full flex-col">
+        <VideoTags video={video} />
 
-        <h4 className="text-lg font-medium text-green-800 md:text-xl">
+        <h4 className="text-xl font-medium leading-snug text-green-800">
           {video.title}
         </h4>
 
-        <p className="mt-3 text-sm leading-relaxed text-gray-600">
+        <p className="mt-4 line-clamp-3 text-sm leading-relaxed text-gray-600">
           {video.description}
         </p>
 
-        <Link
-          href={video.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-4 inline-block text-sm font-medium text-green-700 hover:text-green-900"
-        >
-          在 Instagram 觀看 →
-        </Link>
+        <div className="mt-auto pt-8">
+          <Link
+            href={video.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center rounded-full border border-green-700 px-5 py-2 text-sm font-medium text-green-700 transition-colors hover:bg-green-700 hover:text-white"
+          >
+            在 Instagram 觀看影片 →
+          </Link>
+        </div>
       </div>
-    </article>
-  );
-}
-
-function VideoLinkCard({ video }: { video: Video }) {
-  return (
-    <article className="rounded-xl border border-gray-200 bg-white p-5 transition-shadow hover:shadow-md">
-      <div className="mb-3 flex flex-wrap gap-2">
-        <span className="inline-block rounded-full bg-gray-100 px-3 py-1 text-xs text-gray-600">
-          {video.audience}
-        </span>
-        <span className="inline-block rounded-full bg-green-50 px-3 py-1 text-xs text-green-800">
-          {video.category}
-        </span>
-      </div>
-
-      <h4 className="text-lg font-medium text-green-800">
-        {video.title}
-      </h4>
-
-      <p className="mt-3 text-sm leading-relaxed text-gray-600">
-        {video.description}
-      </p>
-
-      <Link
-        href={video.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="mt-5 inline-flex items-center rounded-full border border-green-700 px-4 py-2 text-sm font-medium text-green-700 transition-colors hover:bg-green-700 hover:text-white"
-      >
-        在 Instagram 觀看影片 →
-      </Link>
     </article>
   );
 }
 
 function VideoSection({
   id,
+  eyebrow,
   title,
   description,
   items,
 }: {
   id: string;
+  eyebrow: string;
   title: string;
   description: string;
   items: Video[];
 }) {
-  const featuredVideos = items.slice(0, 2);
-  const moreVideos = items.slice(2);
-
   return (
-    <section id={id} className="mb-16 scroll-mt-28">
-      <div className="mb-6">
-        <h3 className="font-serif text-2xl font-semibold text-green-900 md:text-3xl">
-          {title}
-        </h3>
-        <p className="mt-3 text-sm leading-relaxed text-gray-600 md:text-base">
-          {description}
-        </p>
+    <section id={id} className="mb-20 scroll-mt-28">
+      <div className="mb-8 flex flex-col gap-4 border-b border-gray-200 pb-6 md:flex-row md:items-end md:justify-between">
+        <div>
+          <p className="mb-2 text-xs font-medium tracking-[0.24em] text-green-700">
+            {eyebrow}
+          </p>
+
+          <h3 className="font-serif text-2xl font-semibold text-green-950 md:text-3xl">
+            {title}
+          </h3>
+
+          <p className="mt-3 max-w-3xl text-sm leading-relaxed text-gray-600 md:text-base">
+            {description}
+          </p>
+        </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-        {featuredVideos.map((video) => (
-          <FeaturedVideoCard key={video.title} video={video} />
+      <div className="grid grid-cols-1 items-stretch gap-6 md:grid-cols-2">
+        {items.map((video, index) => (
+          <VideoCard key={video.title} video={video} index={index} />
         ))}
       </div>
-
-      {moreVideos.length > 0 && (
-        <div className="mt-8">
-          <h4 className="mb-4 text-base font-medium text-gray-700">
-            更多相關影片
-          </h4>
-
-          <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-            {moreVideos.map((video) => (
-              <VideoLinkCard key={video.title} video={video} />
-            ))}
-          </div>
-        </div>
-      )}
     </section>
   );
 }
 
 export default function VideosPage() {
-  useEffect(() => {
-    processInstagramEmbeds();
-  }, []);
-
   return (
-    <div className="w-full">
-      <Script
-        src="https://www.instagram.com/embed.js"
-        strategy="afterInteractive"
-        onLoad={processInstagramEmbeds}
-      />
-
+    <main className="w-full bg-white">
       <div className="mx-auto max-w-6xl px-6">
-        <section className="bg-white pt-16 md:pt-24">
+        <section className="pt-16 md:pt-24">
           <PageHeader title="氧艙科普影音" subtitle="Videos" />
         </section>
 
-        <section className="mb-10 mt-12 md:mt-16">
-          <div className="rounded-2xl border border-gray-200 bg-gray-50 px-6 py-8 text-center">
-            <h2 className="mb-6 font-serif text-xl font-bold text-gray-500 md:text-2xl">
-              – 本內容為科普性質 –
-            </h2>
+        <section className="mb-14 mt-12 md:mt-16">
+          <div className="relative overflow-hidden rounded-3xl border border-gray-200 bg-gradient-to-br from-gray-50 via-white to-green-50 px-6 py-10 text-center md:px-12">
+            <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-green-100/60 blur-2xl" />
+            <div className="absolute -bottom-16 -left-16 h-40 w-40 rounded-full bg-stone-100 blur-2xl" />
 
-            <ul className="space-y-4 leading-relaxed text-gray-600">
-              {introLines.map((line, i) => (
-                <li key={i}>{line}</li>
-              ))}
-            </ul>
+            <div className="relative z-10">
+              <p className="mb-3 text-xs font-medium tracking-[0.24em] text-green-700">
+                OXYGEN CHAMBER KNOWLEDGE
+              </p>
 
-            <p className="mt-8 text-sm leading-relaxed text-gray-500">
-              {disclaimerNote}
-            </p>
+              <h2 className="mb-6 font-serif text-xl font-bold text-gray-600 md:text-2xl">
+                – 本內容為科普性質 –
+              </h2>
+
+              <ul className="mx-auto max-w-4xl space-y-4 leading-relaxed text-gray-600">
+                {introLines.map((line, index) => (
+                  <li key={index}>{line}</li>
+                ))}
+              </ul>
+
+              <p className="mx-auto mt-8 max-w-4xl text-sm leading-relaxed text-gray-500">
+                {disclaimerNote}
+              </p>
+
+              <div className="mt-8 flex flex-wrap justify-center gap-3">
+                <Link
+                  href="#pet-videos"
+                  className="rounded-full bg-green-800 px-5 py-2 text-sm font-medium text-white transition-colors hover:bg-green-900"
+                >
+                  寵物氧艙科普
+                </Link>
+
+                <Link
+                  href="#human-videos"
+                  className="rounded-full border border-green-800 px-5 py-2 text-sm font-medium text-green-800 transition-colors hover:bg-green-800 hover:text-white"
+                >
+                  人體氧艙科普
+                </Link>
+              </div>
+            </div>
           </div>
         </section>
 
         <VideoSection
           id="pet-videos"
-          title="毛孩氧艙科普"
+          eyebrow="PET OXYGEN CHAMBER"
+          title="寵物氧艙科普"
           description="以飼主容易理解的方式，介紹毛孩術後恢復、皮膚照護、氧氣支持與進艙情境，降低大眾對寵物氧艙的陌生感。"
           items={petVideos}
         />
 
         <VideoSection
           id="human-videos"
+          eyebrow="HUMAN OXYGEN CHAMBER"
           title="人體氧艙科普"
           description="從運動恢復、睡眠品質、專注力與日常保養切入，讓大眾快速理解氧氣在身體恢復與狀態管理中的角色。"
           items={humanVideos}
         />
       </div>
-    </div>
+    </main>
   );
 }
