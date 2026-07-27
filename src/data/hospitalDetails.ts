@@ -9,6 +9,15 @@ export const hospitalDetails: Record<
     tags?: string[];
   }
 > = {
+  // ===== 北部 =====
+  安達寵物美容: {
+    address: '351苗栗縣頭份市田寮里自強路二段595號',
+    hours: '週一至週六 09:00–12:00, 13:30–17:00, 18:00–20:30；週日休息',
+    phone: '03-761-4090',
+    mapUrl: 'https://maps.google.com/?q=苗栗縣頭份市田寮里自強路二段595號',
+    siteUrl: '',
+    tags: ['犬貓', '預約制'],
+  },
   // ===== 中部 =====
   東南動物醫院: {
     address: '406台中市北屯區崇德路二段30號',
@@ -178,6 +187,14 @@ export const hospitalDetails: Record<
     hours: '',
     phone: '0932-637-705',
     mapUrl: 'https://maps.google.com/?q=高雄市前金區中華三路23之7＆23號之8號',
+    siteUrl: '',
+    tags: ['犬貓', '預約制'],
+  },
+  帝大寵物美容: {
+    address: '802高雄市苓雅區林德里四維二路27號',
+    hours: '週一至週六 11:00–18:00；週日休息',
+    phone: '07-390-8768',
+    mapUrl: 'https://maps.google.com/?q=高雄市苓雅區林德里四維二路27號',
     siteUrl: '',
     tags: ['犬貓', '預約制'],
   }

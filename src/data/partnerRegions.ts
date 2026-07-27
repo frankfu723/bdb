@@ -1,7 +1,9 @@
 import type { PartnerRegion } from "@/types/locations";
 
 export const partnerRegions: PartnerRegion[] = [
-  { region: "北部", items: [] },
+  { region: "北部", items: [
+    { name: "安達寵物美容", url: "" },
+  ] },
   {
     region: "中部",
     items: [
@@ -31,6 +33,7 @@ export const partnerRegions: PartnerRegion[] = [
       { name: "佳愛動物醫院", url: "" },
       { name: "我的動物醫院", url: "" },
       { name: "希安動物醫院", url: "" },
+      { name: "帝大寵物美容", url: "" },
     ],
   },
 ];
