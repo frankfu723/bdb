@@ -16,7 +16,7 @@ export const humans: Human[] = [
     hours: "",
     phone: "0915-322-788",
     siteUrl: "https://www.instagram.com/cultivate.fit/",
-    tags: ["採全預約制"],
+    tags: ["預約制"],
   },
   {
     name: "MYWAY Fitness",
@@ -27,11 +27,11 @@ export const humans: Human[] = [
     tags: ["按分鐘計費"],
   },
   {
-    name: "新北市立新北高級中學",
-    address: "新北市三重區三信路1號",
-    hours: "",
+    name: "新北高中綜合體育館",
+    address: "新北市三重區富貴里三信路25號",
+    hours: "週一至週日 08:00-22:00",
     phone: "02-2857-7326",
-    siteUrl: "https://www.ntsh.ntpc.edu.tw/",
-    tags: ["學校"],
+    siteUrl: "https://iplay.sports.gov.tw/gyminfo/index/9805",
+    tags: ["預約制"],
   }
 ];
