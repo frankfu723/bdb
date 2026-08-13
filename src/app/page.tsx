@@ -15,12 +15,36 @@ type FeaturedVideo = {
 };
 
 const COMPARISON: CompareRow[] = [
-  ['艙內壓力', '≥ 1.5 ATA', '1.2–1.5 ATA'],
-  ['氧輸送機制重點', '血紅素攜氧 + 血漿溶氧顯著↑', '血紅素攜氧 + 血漿溶氧小幅↑'],
-  ['體感特徵', '加壓感較明顯，需適應耳壓變化', '壓力溫和，舒適度高'],
-  ['使用模式', '時段較集中、依場域安排', '可較高頻率、規律融入日常'],
-  ['場域導入', '艙體規格完整、配套較多', '門檻較低、配置彈性高'],
-  ['操作複雜度', '流程較完整、管理較嚴謹', '流程簡化、操作友善'],
+  [
+    '艙內壓力',
+    '通常 ≥ 1.5 ATA',
+    '約 1.10 ATA',
+  ],
+  [
+    '供氧方式',
+    '依療程與設備規範提供高濃度氧氣',
+    '輕度加壓環境搭配氧氣供應',
+  ],
+  [
+    '體感特徵',
+    '加壓感較明顯，需適應耳壓變化',
+    '壓力溫和，舒適度高',
+  ],
+  [
+    '使用方式',
+    '依專業評估及場域流程安排',
+    '依設備指引與個人狀況安排',
+  ],
+  [
+    '常見場域',
+    '醫療院所或具專業管理的場域',
+    '健康管理、運動休息及一般服務空間',
+  ],
+  [
+    '設備管理',
+    '需依醫療及安全規範操作',
+    '依產品手冊與場域安全規範操作',
+  ],
 ];
 
 const FEATURED_VIDEOS: FeaturedVideo[] = [
@@ -51,7 +75,7 @@ export default function HomePage() {
   return (
     <div className="w-full">
       {/* ===== Full-bleed Banner ===== */}
-      <div className="relative left-1/2 right-1/2 -translate-x-1/2 w-screen">
+      <div className="relative left-1/2 right-1/2 w-screen -translate-x-1/2">
         <Banner
           imageSrc="/images/banner/home.jpg"
           mobileImageSrc="/images/products/human/soft/forest_chamber.jpg"
@@ -59,18 +83,18 @@ export default function HomePage() {
       </div>
 
       {/* ===== Main Container ===== */}
-      <div className="max-w-[1400px] xl:max-w-[1500px] 2xl:max-w-[1660px] mx-auto px-6">
+      <div className="mx-auto max-w-[1400px] px-6 xl:max-w-[1500px] 2xl:max-w-[1660px]">
         {/* ===== 產品列表 ===== */}
-        <section className="mt-20 mx-auto">
-          <h2 className="font-serif text-4xl text-center font-semibold text-green-900">
+        <section className="mx-auto mt-20">
+          <h2 className="text-center font-serif text-4xl font-semibold text-green-900">
             產品列表
           </h2>
 
           <p className="mt-2 text-center text-gray-600">
-            多元氧艙解決方案，滿足不同場域需求
+            從寵物照護到人體休息，提供符合不同空間需求的氧艙設備
           </p>
 
-          <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+          <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
             {[
               {
                 title: "寵物用高壓氧艙",
@@ -89,11 +113,11 @@ export default function HomePage() {
               },
             ].map((item, index) => (
               <Link
-                key={index}
+                key={item.link}
                 href={item.link}
                 className="group block overflow-hidden rounded-lg shadow-md"
               >
-                <div className="relative w-full aspect-[5/4] md:aspect-[4/3]">
+                <div className="relative aspect-[5/4] w-full md:aspect-[4/3]">
                   <Image
                     src={item.img}
                     alt={item.title}
@@ -104,10 +128,11 @@ export default function HomePage() {
                   />
                 </div>
 
-                <div className="font-serif bg-green-900/80 text-white text-center px-2 py-2.5 md:py-3 leading-tight">
-                  <span className="text-base md:text-lg font-bold align-middle">
+                <div className="bg-green-900/80 px-2 py-2.5 text-center font-serif leading-tight text-white md:py-3">
+                  <span className="align-middle text-base font-bold md:text-lg">
                     {item.title}
                   </span>
+
                   <span className="ml-1.5 inline-block align-middle transition-transform group-hover:translate-x-1">
                     →
                   </span>
@@ -118,14 +143,14 @@ export default function HomePage() {
         </section>
 
         {/* ===== 影片精華區 ===== */}
-        <section className="py-20 px-0 md:px-6 max-w-6xl mx-auto">
+        <section className="mx-auto max-w-6xl px-0 py-20 md:px-6">
           <div className="rounded-3xl border border-gray-200 bg-white px-5 py-10 shadow-sm md:px-10 md:py-14">
             <div className="mx-auto max-w-3xl text-center">
               <h2 className="font-serif text-4xl font-semibold text-green-900">
                 氧艙科普影音精選
               </h2>
 
-              <p className="mt-4 text-gray-700 leading-relaxed">
+              <p className="mt-4 leading-relaxed text-gray-700">
                 透過短影音快速認識寵物氧艙、人體氧艙與日常氧氣支持觀念。
                 我們以簡單易懂的方式，協助飼主、場館與合作夥伴建立正確的氧艙使用認知。
               </p>
@@ -175,131 +200,169 @@ export default function HomePage() {
         </section>
 
         {/* ===== 什麼是高壓氧 ===== */}
-        <section className="py-20 px-6 max-w-6xl mx-auto text-center">
-          <h2 className="font-serif text-4xl text-center font-semibold text-green-900 mb-4">
+        <section className="mx-auto max-w-6xl px-6 py-20 text-center">
+          <h2 className="mb-4 text-center font-serif text-4xl font-semibold text-green-900">
             什麼是高壓氧？
           </h2>
-          <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
-            高壓氧（HBO）是在高於大氣壓的環境提供較高濃度氧氣；壓力上升使艙內氧分壓提高，依亨利定律（氣體在液體中的溶解度與分壓成正比，C∝P），更多氧直接溶解於血漿，而不僅依賴血紅素攜氧。血漿溶氧增加使組織氧分壓（PtO₂）與擴散梯度上升，氧可更有效進入微循環與相對缺氧區域；實際壓力與時間設定應依設備與場域規範。
+
+          <p className="mx-auto max-w-3xl text-lg leading-relaxed text-gray-700">
+            高壓氧（HBO）是在高於一般大氣壓的環境中吸入高濃度氧氣。
+            隨著環境壓力與氧分壓提高，氧氣在血漿中的溶解量也會增加。
+            醫療用途的高壓氧治療須由專業人員評估，並依核准設備、適應症與操作規範執行。
           </p>
         </section>
 
-        {/* ===== 高壓氧艙原理（文字版） ===== */}
-        <section className="py-12 px-6 max-w-3xl mx-auto">
-          <h3 className="font-serif text-4xl font-semibold text-green-900 text-center mb-6">
+        {/* ===== 高壓氧艙原理 ===== */}
+        <section className="mx-auto max-w-3xl px-6 py-12">
+          <h3 className="mb-6 text-center font-serif text-4xl font-semibold text-green-900">
             高壓氧艙原理說明
           </h3>
 
-          <p className="text-gray-700 leading-relaxed mb-4">
-            高壓氧艙在高於大氣壓的環境下，使氧氣在血漿中的溶解度大幅提升，能更有效輸送至全身組織，短時間內達到強化供氧與加速擴散的效果。
+          <p className="mb-4 leading-relaxed text-gray-700">
+            高壓氧艙透過提高環境壓力與吸入氧濃度，提升氧分壓；
+            依亨利定律，氣體分壓提高時，在液體中的溶解量也會增加。
           </p>
 
-          <ol className="list-decimal ml-5 text-gray-800 space-y-3">
+          <ol className="ml-5 list-decimal space-y-3 text-gray-800">
             <li>
-              <span className="font-semibold text-green-900">壓力提升（P↑）</span>
-              ：艙內壓力高於 1 ATA，空氣被壓縮。
+              <span className="font-semibold text-green-900">
+                壓力提升（P↑）
+              </span>
+              ：艙內壓力高於 1 ATA，空氣受到壓縮。
             </li>
+
             <li>
-              <span className="font-semibold text-green-900">溶解氧增加</span>
-              ：依亨利定律，壓力越高，氧在血漿中的溶解量越多，
-              <span className="whitespace-nowrap">不僅依賴血紅素</span> 攜氧。
+              <span className="font-semibold text-green-900">
+                溶解氧增加
+              </span>
+              ：依亨利定律，氧分壓提高時，氧在血漿中的溶解量會增加。
             </li>
+
             <li>
-              <span className="font-semibold text-green-900">組織氧分壓上升</span>
-              ：血液中的溶氧↑ → 組織氧分壓↑ → 氧氣擴散更有效率。
+              <span className="font-semibold text-green-900">
+                組織氧分壓上升
+              </span>
+              ：血液中的溶解氧增加，有助提高組織氧分壓與氧氣擴散梯度。
             </li>
+
             <li>
-              <span className="font-semibold text-green-900">短時強化供氧</span>
-              ：在符合規範的時間與壓力下，達到較明顯的加壓與供氧效果。
+              <span className="font-semibold text-green-900">
+                專業評估與操作
+              </span>
+              ：實際壓力、氧濃度與使用時間，應依設備規範及專業評估設定。
             </li>
           </ol>
 
-          <div className="mt-5 border border-gray-100 bg-gray-50/40 p-4 text-md text-green-900">
-            <div className="font-serif font-semibold mb-2">作用流程</div>
+          <div className="mt-5 border border-gray-100 bg-gray-50/40 p-4 text-base text-green-900">
+            <div className="mb-2 font-serif font-semibold">
+              作用流程
+            </div>
+
             <div>
-              加壓（P↑） → 血漿溶氧（O₂↑） → 組織氧分壓（PtO₂↑） → 氧擴散效率↑
+              加壓（P↑） → 血漿溶氧（O₂↑） → 組織氧分壓（PtO₂↑） →
+              氧氣擴散梯度提高
             </div>
           </div>
         </section>
 
         {/* ===== 什麼是微壓氧 ===== */}
-        <section className="py-16 px-6 max-w-6xl mx-auto text-center">
-          <h2 className="font-serif text-4xl text-center font-semibold text-green-900 mb-4">
+        <section className="mx-auto max-w-6xl px-6 py-16 text-center">
+          <h2 className="mb-4 text-center font-serif text-4xl font-semibold text-green-900">
             什麼是微壓氧？
           </h2>
 
-          <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
-            微壓氧（mHBO）是在略高於大氣壓（約 1.2–1.5 ATA）的環境中吸入較高濃度氧氣。壓力與氧分壓的提升，依據菲克擴散定律，會增加肺泡與血液間的氧氣擴散速率，使更多氧氣進入血漿並輸送至全身組織。由於加壓幅度溫和，減少了氣壓相關不適，適合長期、規律地作為日常氧補充與代謝支持。
+          <p className="mx-auto max-w-3xl text-lg leading-relaxed text-gray-700">
+            微壓氧是在略高於一般大氣壓的艙內環境中，搭配氧氣供應，
+            提供相對溫和的加壓與休息體驗。本產品工作壓力約為
+            1.10 ATA；實際艙內壓力、氧濃度與體感會因設備設定、
+            環境及使用條件而異。
           </p>
         </section>
 
-        {/* ===== 微壓氧艙原理（文字版） ===== */}
-        <section className="py-12 px-6 max-w-3xl mx-auto">
-          <h3 className="font-serif text-4xl font-semibold text-green-900 text-center mb-6">
+        {/* ===== 微壓氧艙原理 ===== */}
+        <section className="mx-auto max-w-3xl px-6 py-12">
+          <h3 className="mb-6 text-center font-serif text-4xl font-semibold text-green-900">
             微壓氧艙原理說明
           </h3>
 
-          <p className="text-gray-700 leading-relaxed mb-4">
-            微壓氧以「輕度加壓 + 較高氧濃度」為主，強調舒適穩定的補氧體驗。
+          <p className="mb-4 leading-relaxed text-gray-700">
+            微壓氧以「輕度加壓＋氧氣供應」為核心，著重舒適、穩定的艙內休息體驗。
           </p>
 
-          <ol className="list-decimal ml-5 text-gray-800 space-y-3">
+          <ol className="ml-5 list-decimal space-y-3 text-gray-800">
             <li>
-              <span className="font-semibold text-green-900">輕度加壓</span>
-              ：在 1.2–1.5 ATA 範圍內，溶氧小幅提升。
+              <span className="font-semibold text-green-900">
+                輕度加壓
+              </span>
+              ：工作壓力約 1.10 ATA，加壓感相對溫和。
             </li>
+
             <li>
-              <span className="font-semibold text-green-900">穩定補氧</span>
-              ：在舒適的壓力條件下維持較高氧分壓，帶來漸進式的氧供應。
+              <span className="font-semibold text-green-900">
+                穩定供氧
+              </span>
+              ：在輕度加壓環境中搭配氧氣供應；實際氧濃度依設備與使用條件而異。
             </li>
+
             <li>
-              <span className="font-semibold text-green-900">可持續性</span>
-              ：體感溫和、門檻低，便於較高頻率或規律性的使用安排。
+              <span className="font-semibold text-green-900">
+                舒適體驗
+              </span>
+              ：平穩微壓環境，較容易被多數使用者接受。
             </li>
+
             <li>
-              <span className="font-semibold text-green-900">導入彈性</span>
-              ：艙體與場域需求較簡化，配置彈性高。
+              <span className="font-semibold text-green-900">
+                導入彈性
+              </span>
+              ：艙體與場域需求相對簡化，適合不同空間配置。
             </li>
           </ol>
 
-          <div className="mt-5 border border-gray-100 bg-gray-50/40 p-4 text-md text-green-900">
-            <div className="font-serif font-semibold mb-2">作用流程</div>
+          <div className="mt-5 border border-gray-100 bg-gray-50/40 p-4 text-base text-green-900">
+            <div className="mb-2 font-serif font-semibold">
+              作用流程
+            </div>
+
             <div>
-              輕度加壓（P↗） + 較高氧濃度 → 血漿溶氧（小幅↑） → 組織氧分壓（穩定↑）
+              輕度加壓（P↗）＋氧氣供應 → 艙內氧分壓提高 →
+              提供舒適的休息環境
             </div>
           </div>
         </section>
 
         {/* ===== 高壓氧 vs 微壓氧 ===== */}
-        <section className="py-20 px-6 max-w-6xl mx-auto font-serif">
-          <h2 className="text-4xl font-semibold text-center text-green-900 mb-6">
+        <section className="mx-auto max-w-6xl px-6 py-20 font-serif">
+          <h2 className="mb-6 text-center text-4xl font-semibold text-green-900">
             高壓氧 vs 微壓氧
           </h2>
 
-          {/* 手機版卡片表格 */}
-          <div className="md:hidden text-green-900">
+          {/* 手機版比較表 */}
+          <div className="text-green-900 md:hidden">
             <ul className="space-y-4">
               {COMPARISON.map(([label, hbo, mhbo]) => (
                 <li key={label} className="bg-white p-4">
-                  <div className="font-serif font-semibold text-base mb-3">
+                  <div className="mb-3 font-serif text-base font-semibold">
                     {label}
                   </div>
 
-                  <div className="border border-gray-200 overflow-hidden">
-                    <div className="grid grid-cols-1 min-[360px]:grid-cols-2 text-center text-s bg-gray-50">
-                      <div className="py-2 font-medium border-b min-[360px]:border-b-0 min-[360px]:border-r border-gray-200">
+                  <div className="overflow-hidden border border-gray-200">
+                    <div className="grid grid-cols-1 bg-gray-50 text-center min-[360px]:grid-cols-2">
+                      <div className="border-b border-gray-200 py-2 font-medium min-[360px]:border-b-0 min-[360px]:border-r">
                         高壓氧（HBO）
                       </div>
-                      <div className="py-2 font-medium border-b min-[360px]:border-b-0 border-gray-200">
-                        微壓氧（mHBO）
+
+                      <div className="border-b border-gray-200 py-2 font-medium min-[360px]:border-b-0">
+                        微壓氧
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-1 min-[360px]:grid-cols-2 text-center">
-                      <div className="min-w-0 p-3 text-sm text-gray-800 leading-relaxed break-words min-[360px]:border-t min-[360px]:border-r border-gray-200">
+                    <div className="grid grid-cols-1 text-center min-[360px]:grid-cols-2">
+                      <div className="min-w-0 break-words border-gray-200 p-3 text-sm leading-relaxed text-gray-800 min-[360px]:border-r min-[360px]:border-t">
                         {hbo}
                       </div>
-                      <div className="min-w-0 p-3 text-sm text-gray-800 leading-relaxed break-words border-t border-gray-200">
+
+                      <div className="min-w-0 break-words border-t border-gray-200 p-3 text-sm leading-relaxed text-gray-800">
                         {mhbo}
                       </div>
                     </div>
@@ -309,27 +372,38 @@ export default function HomePage() {
             </ul>
           </div>
 
-          {/* 桌機版表格 */}
-          <div className="hidden md:block overflow-x-auto">
-            <table className="w-full max-w-6xl mx-auto text-green-900 border-collapse border border-gray-200 text-base">
+          {/* 桌機版比較表 */}
+          <div className="hidden overflow-x-auto md:block">
+            <table className="mx-auto w-full max-w-6xl border-collapse border border-gray-200 text-base text-green-900">
               <thead>
                 <tr className="bg-green-900 text-white">
-                  <th className="p-4 border border-gray-200 text-center">比較參數</th>
-                  <th className="p-4 border border-gray-200 text-center">高壓氧（HBO）</th>
-                  <th className="p-4 border border-gray-200 text-center">微壓氧（mHBO）</th>
+                  <th className="border border-gray-200 p-4 text-center">
+                    比較參數
+                  </th>
+
+                  <th className="border border-gray-200 p-4 text-center">
+                    高壓氧（HBO）
+                  </th>
+
+                  <th className="border border-gray-200 p-4 text-center">
+                    微壓氧
+                  </th>
                 </tr>
               </thead>
+
               <tbody>
-                {COMPARISON.map(([k, h, m]) => (
-                  <tr key={k} className="odd:bg-gray-50">
-                    <td className="p-4 border border-gray-200 text-center font-semibold whitespace-nowrap">
-                      {k}
+                {COMPARISON.map(([label, hbo, mhbo]) => (
+                  <tr key={label} className="odd:bg-gray-50">
+                    <td className="whitespace-nowrap border border-gray-200 p-4 text-center font-semibold">
+                      {label}
                     </td>
-                    <td className="p-4 border border-gray-200 text-center whitespace-pre-line">
-                      {h}
+
+                    <td className="whitespace-pre-line border border-gray-200 p-4 text-center">
+                      {hbo}
                     </td>
-                    <td className="p-4 border border-gray-200 text-center whitespace-pre-line">
-                      {m}
+
+                    <td className="whitespace-pre-line border border-gray-200 p-4 text-center">
+                      {mhbo}
                     </td>
                   </tr>
                 ))}
@@ -337,8 +411,9 @@ export default function HomePage() {
             </table>
           </div>
 
-          <p className="text-center text-gray-500 text-sm mt-4">
-            以上內容為一般性比較與示意，實際操作請依設備型號與場域規範。
+          <p className="mt-4 text-center text-sm text-gray-500">
+            以上為一般性原理與設備差異說明，不代表醫療效果。實際操作請依設備型號、
+            產品手冊及場域安全規範。
           </p>
         </section>
 
