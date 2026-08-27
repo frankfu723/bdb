@@ -33,5 +33,13 @@ export const humans: Human[] = [
     phone: "02-2857-7326",
     siteUrl: "https://iplay.sports.gov.tw/gyminfo/index/9805",
     tags: ["預約制"],
+  },
+  {
+    name: "Studio Stray",
+    address: "桃園市龜山區文化里復興一路128-2號4樓",
+    hours: "週一至週日 00:00-24:00",
+    phone: "",
+    siteUrl: "https://www.instagram.com/studio_stray_/",
+    tags: ["預約制","自主訓練"],
   }
 ];
