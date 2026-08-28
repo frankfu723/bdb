@@ -202,7 +202,7 @@ export default function MobileNav({
         {/* 聯絡我們（LINE） */}
         <li>
           <a
-            href="https://line.me/ti/p/@464hptwo"
+            href="https://line.me/ti/p/@789xlenl"
             target="_blank"
             rel="noopener noreferrer"
             onClick={closeMenu}

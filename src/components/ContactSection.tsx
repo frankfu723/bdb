@@ -145,7 +145,7 @@ export default function ContactSection() {
                 required
                 inputMode="tel"
                 autoComplete="tel"
-                pattern="^[0-9\\-+\\s()]{6,}$"
+                pattern="^(?:[0-9]|\+|\-|\s|\(|\)){6,}$"
                 placeholder="請輸入您的電話"
                 className="mt-2 w-full bg-black/30 text-white placeholder-white/80 border border-black rounded-md px-4 py-3 caret-white backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-black"
                 title="請輸入有效的電話號碼"

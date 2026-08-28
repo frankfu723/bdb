@@ -312,7 +312,7 @@ export default function Footer() {
         {/* CTA */}
         <div className="mt-16 text-center">
           <Link
-            href="https://line.me/ti/p/@464hptwo"
+            href="https://line.me/ti/p/@789xlenl"
             target="_blank"
             rel="noopener noreferrer"
             className="mx-auto inline-flex w-full max-w-xs items-center justify-center border border-white px-6 py-3 text-base font-medium tracking-wide text-white transition-colors duration-300 hover:bg-white hover:text-[#003E1F] sm:w-auto"

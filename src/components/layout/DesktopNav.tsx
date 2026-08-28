@@ -140,7 +140,7 @@ export default function DesktopNav({}: { partnerRegions: Region[] }) {
           <Link href="/customer-service">客戶服務</Link>
         </li>
         <li className="px-2 sm:px-2.5 md:px-3 lg:px-5 whitespace-nowrap">
-          <a href="https://line.me/ti/p/@464hptwo" target="_blank" rel="noopener noreferrer">聯絡我們</a>
+          <a href="https://line.me/ti/p/@789xlenl" target="_blank" rel="noopener noreferrer">聯絡我們</a>
         </li>
       </ul>
     </nav>
