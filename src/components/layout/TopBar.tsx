@@ -31,7 +31,7 @@ export default function TopBar() {
               <Image src="/images/icons/instagram.png" alt="Instagram" width={22} height={22} />
             </a>
             <a
-              href="https://line.me/ti/p/@789xlenl"
+              href="https://lin.ee/99Ad6LH"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LINE"
